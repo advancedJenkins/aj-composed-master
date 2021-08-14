@@ -1,0 +1,7 @@
+environment:
+  AJ_DEBUG_MODE: 'false'
+  AJ_PIPELINES_BRANCH: 'lts'
+  AJ_DEFAULT_JDK_TOOL_NAME: 'jdk'
+  AJ_DEFAULT_MAVEN_TOOL_NAME: 'maven'
+  AJ_DEFAULT_MAVEN_SETTINGS_FILE_CONFIG_NAME: 'maven-settings'
+

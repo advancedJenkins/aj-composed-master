@@ -1,0 +1,16 @@
+clouds:
+  aj-docker:
+    type: docker
+    dockerHostUri: 'unix:///var/run/docker.sock'
+    templates:
+      - name: jenkins-jnlp-slave
+        image: odavid/jenkins-jnlp-slave:latest
+        mode: NORMAL
+        labels:
+          - jenkins-jnlp-slave
+        remoteFs: /home/jenkins
+        jvmArgs: -Xmx1g
+        volumes:
+          - '/var/run/docker.sock:/var/run/docker.sock'
+        instanceCap: '10'
+

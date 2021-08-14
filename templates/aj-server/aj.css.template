@@ -1,0 +1,26 @@
+#jenkins-head-icon {
+    width:0px;
+    height:0px;
+    padding: 19px;
+background: url('/userContent/logo.png');
+}
+#header {
+    background-color: AJ_MASTER_BANNER_COLOR;
+    height: 40px;
+}
+
+
+.logo span {
+    display: none;
+  }
+
+  .logo:after {
+    content: 'AJ_MASTER_TITLE_TEXT';
+    font-weight: bold;
+    font-size: 26px;
+    position: relative;
+    right: 0px;
+    top: 0px;
+    display: block;
+    color: AJ_MASTER_TITLE_COLOR;
+  }

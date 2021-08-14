@@ -1,0 +1,8 @@
+
+    labels:
+      traefik.enable: "true"
+      traefik.port: "${JENKINS_HTTP_PORT_FOR_SLAVES}"
+      traefik.frontend.passHostHeader: "true"
+      traefik.frontend.rule: "Host:<HOST ID>"
+    depends_on:
+      - traefik

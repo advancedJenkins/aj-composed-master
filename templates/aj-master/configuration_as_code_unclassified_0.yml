@@ -1,0 +1,27 @@
+
+  unclassified:
+    simple-theme-plugin:
+      elements:
+      - cssUrl:
+          url: "/userContent/aj.css"
+      - faviconUrl:
+          url: "/userContent/logo.png"
+    globalConfigFiles:
+        configs:
+        - mavenSettings:
+            id: maven-settings
+            name: maven-settings
+            comment: maven settings
+            isReplaceAll: false
+            serverCredentialMappings:
+            - serverId: server
+            content: |
+              <settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
+                        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                        xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0 http://maven.apache.org/xsd/settings-1.0.0.xsd">
+                <!-- activeProfiles
+                | List of profiles that are active for all builds.
+                |
+                -->
+              </settings>
+

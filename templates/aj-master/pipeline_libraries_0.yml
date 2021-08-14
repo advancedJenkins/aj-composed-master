@@ -1,0 +1,9 @@
+pipeline_libraries:
+  aj-library:
+    source:
+      remote: https://gitlab.com/tikalk/aj/aj-jenkins/aj-jenkins-pipeline.git
+    defaultVersion: master
+    implicit: false
+    allowVersionOverride: true
+    includeInChangesets: true
+

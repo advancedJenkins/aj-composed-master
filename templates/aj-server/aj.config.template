@@ -1,0 +1,11 @@
+#!/bin/bash
+
+export AJ_MASTER_VERSION='odavid/my-bloody-jenkins:lts'
+export AJ_HOST_IP=*
+export JENKINS_HTTP_PORT_FOR_SLAVES=8080
+export JENKINS_SLAVE_AGENT_PORT=50000
+export AJ_CUSTOMIZATION_FOLDER='cust'
+export JENKINS_ENV_EXECUTERS=0
+export AJ_MASTER_TITLE_TEXT='advancedJenkins'
+export AJ_MASTER_TITLE_COLOR=orange
+export AJ_MASTER_BANNER_COLOR=darkblue

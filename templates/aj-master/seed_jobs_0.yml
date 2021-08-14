@@ -1,0 +1,8 @@
+seed_jobs:
+  aj-master-sanity-check:
+    source:
+      remote: https://gitlab.com/tikalk/aj/aj-jenkins/aj-jenkins-pipeline.git
+      branch: 'master'
+    pipeline: pipelines/bootstrap/aj-master-sanity-check/Jenkinsfile
+    executeWhen: never
+

@@ -1,0 +1,7 @@
+security:
+  realm: jenkins_database
+  adminPassword: ${JENKINS_ADMIN_PASSWORD}
+
+  remove_master_envvars:
+  - '.*PASSWORD.*'
+

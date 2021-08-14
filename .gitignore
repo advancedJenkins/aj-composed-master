@@ -1,0 +1,12 @@
+.idea/
+.data/
+aj-master-config.yml
+docker-compose.yml
+aj.config
+temp/
+customization*/
+setup*/
+traefik/
+acme.json
+info/
+cust/

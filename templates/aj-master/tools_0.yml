@@ -1,0 +1,14 @@
+tools:
+  installations:
+    maven:
+      type: maven
+      installers:
+        - id: '3.6.0'
+    jdk:
+      type: jdk
+      home: /usr/lib/jvm/java-1.8-openjdk
+    go:
+      type: golang
+      installers:
+        - id: '1.8'
+

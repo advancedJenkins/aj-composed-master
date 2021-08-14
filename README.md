@@ -1,4 +1,4 @@
-# aj-Jenkins-Server-Compose
+# aj-composed-master
 
 With this repository, you can establish **aj-composed-server** server - for loading a well-established Jenkins server.
 

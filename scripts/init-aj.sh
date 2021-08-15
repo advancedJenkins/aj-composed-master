@@ -16,7 +16,7 @@ function initAjScript {
     mkdir -p temp
 }
 
-function initAJConfig {
+function initAjConfig {
     echo "#!/bin/bash" > temp/aj.config
     echo -e "" >> temp/aj.config
 }

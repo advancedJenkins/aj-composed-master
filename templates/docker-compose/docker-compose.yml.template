@@ -1,13 +1,13 @@
 version: '2'
 services:
-  AppCycles-master:
+  aj-master:
     restart: always
-    image: $APPCYCLES_MASTER_VERSION
+    image: $AJ_MASTER_VERSION
     ports:
       - '${JENKINS_HTTP_PORT_FOR_SLAVES}:8080'
       - '${JENKINS_SLAVE_AGENT_PORT}:${JENKINS_SLAVE_AGENT_PORT}'
     volumes:
-      - '${PWD}/AppCycles-master-config.yml:/AppCycles-master-config.yml'
+      - '${PWD}/aj-master-config.yml:/aj-master-config.yml'
       - '.data/jenkins_home:/var/jenkins_home'
       - '.data/jenkins-workspace-home:/jenkins-workspace-home'
       - '/var/run/docker.sock:/var/run/docker.sock'
@@ -15,8 +15,8 @@ services:
       JAVA_OPTS_MEM: '-Xmx1g'
       JAVA_OPTS_LOAD_STATS_CLOCK: ''
       JENKINS_ENV_ADMIN_USER: admin
-      JENKINS_ENV_HOST_IP: ${APPCYCLES_HOST_IP}
-      JENKINS_ENV_CONFIG_YML_URL: file:///AppCycles-master-config.yml
+      JENKINS_ENV_HOST_IP: ${AJ_HOST_IP}
+      JENKINS_ENV_CONFIG_YML_URL: file:///aj-master-config.yml
       JENKINS_ENV_QUIET_STARTUP_PERIOD: 120
       JENKINS_ADMIN_PASSWORD: admin
       JENKINS_HTTP_PORT_FOR_SLAVES: ${JENKINS_HTTP_PORT_FOR_SLAVES}

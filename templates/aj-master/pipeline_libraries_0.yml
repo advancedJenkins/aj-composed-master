@@ -1,7 +1,7 @@
 pipeline_libraries:
   aj-library:
     source:
-      remote: https://gitlab.com/tikalk/aj/aj-jenkins/aj-jenkins-pipeline.git
+      remote: https://github.com/advancedJenkins/aj-library.git
     defaultVersion: master
     implicit: false
     allowVersionOverride: true

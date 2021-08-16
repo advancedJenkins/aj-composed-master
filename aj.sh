@@ -15,18 +15,18 @@ function initajScript {
 }
 
 function usage {
-    echo -e "\n${BG_BLUE}aj command usage${NC}\n"
+    echo -e "\n${BG_BLUE}advancedJenkinscommand usage${NC}\n"
     echo -e "${BLUE}aj.sh${NC} ${BOLDBLUE}<action>${NC} ${BLUE}[option]${NC}"
     echo -e "\n  where ${BOLDBLUE}<action>${NC} is ..."
     echo -e "\t${BOLDBLUE}usage${NC} - show this usage description."
-    echo -e "\t${BOLDBLUE}version${NC} - show aj-server version information."
-    echo -e "\t${BOLDBLUE}status${NC} - show aj-server server status & version information."
-    echo -e "\t${BOLDBLUE}init${NC} - initialize aj-server settings."
-    echo -e "\t${BOLDBLUE}start${NC} - start the aj-server."
-    echo -e "\t${BOLDBLUE}stop${NC} - stop the aj-server."
-    echo -e "\t${BOLDBLUE}restart${NC} - restart the aj-server."
-    echo -e "\t${BOLDBLUE}apply${NC} - apply changes in the 'setup' folder on the aj-server."
-    echo -e "\t${BOLDBLUE}upgrade${NC} ${BLUE}[git-tag]${NC} - upgrage the aj-server version. If no git-tag specified, upgrade to the latest on 'master' branch."
+    echo -e "\t${BOLDBLUE}version${NC} - show advancedJenkins-server version information."
+    echo -e "\t${BOLDBLUE}status${NC} - show advancedJenkins-server server status & version information."
+    echo -e "\t${BOLDBLUE}init${NC} - initialize advancedJenkins-server settings."
+    echo -e "\t${BOLDBLUE}start${NC} - start the advancedJenkins-server."
+    echo -e "\t${BOLDBLUE}stop${NC} - stop the advancedJenkins-server."
+    echo -e "\t${BOLDBLUE}restart${NC} - restart the advancedJenkins-server."
+    echo -e "\t${BOLDBLUE}apply${NC} - apply changes in the 'setup' folder on the advancedJenkins-server."
+    echo -e "\t${BOLDBLUE}upgrade${NC} ${BLUE}[git-tag]${NC} - upgrage the advancedJenkins-server version. If no git-tag specified, upgrade to the latest on 'master' branch."
     echo -e "\t${BOLDBLUE}log${NC} - tail the docker-compose log."
     echo -e "\t${BOLDBLUE}iptest${NC} - test whether the automatic LAN ip detection works OK."
 }
@@ -79,7 +79,7 @@ function setupajScript {
     cp -n templates/customized/docker-compose/*.yml cust/docker-compose/ 2> /dev/null | true
     cp -f ${aj_CUSTOMIZATION_FOLDER}/docker-compose/*.yml setup/docker-compose/ 2> /dev/null | true
     echo "# PLEASE NOTICE:" > docker-compose.yml
-    echo "# This is a generated file, so any change in it will be lost on the next aj action!" >> docker-compose.yml
+    echo "# This is a generated file, so any change in it will be lost on the next advancedJenkins action!" >> docker-compose.yml
     echo "" >> docker-compose.yml
     cat setup/docker-compose/docker-compose.yml.template >> docker-compose.yml
     numberOfFiles=`ls -1q setup/docker-compose/*.yml 2> /dev/null | wc -l | xargs`
@@ -91,9 +91,9 @@ function setupajScript {
     mkdir -p cust/aj-master
     cp -n templates/customized/aj-master/*.yml cust/aj-master/ 2> /dev/null | true
     cp -f templates/aj-master/*.yml setup/aj-master/ 2> /dev/null | true
-    cp -f ${aj_CUSTOMIZATION_FOLDER}/aj-master/*.yml setup/aj-master/ 2> /dev/null | true
+    cp -f ${AJ_CUSTOMIZATION_FOLDER}/aj-master/*.yml setup/aj-master/ 2> /dev/null | true
     echo "# PLEASE NOTICE:" > aj-master-config.yml
-    echo "# This is a generated file, so any change in it will be lost on the next aj action!" >> aj-master-config.yml
+    echo "# This is a generated file, so any change in it will be lost on the next advancedJenkins action!" >> aj-master-config.yml
     echo "" >> aj-master-config.yml
     numberOfFiles=`ls -1q setup/aj-master/*.yml 2> /dev/null | wc -l | xargs`
     cat setup/aj-master/*.yml >> aj-master-config.yml | true
@@ -104,7 +104,7 @@ function setupajScript {
     cp -n templates/userContent/* setup/userContent/ 2> /dev/null | true
     cp -f ${aj_CUSTOMIZATION_FOLDER}/userContent/* setup/userContent/ 2> /dev/null | true
     mkdir -p .data/jenkins_home/userContent
-    sed "s/AJ_MASTER_TITLE_TEXT/${aj_MASTER_TITLE_TEXT}/ ; s/AJ_MASTER_TITLE_COLOR/${aj_MASTER_TITLE_COLOR}/ ; s/AJ_MASTER_BANNER_COLOR/${aj_MASTER_BANNER_COLOR}/" templates/aj-server/aj.css.template > setup/userContent/aj.css
+    sed "s/AJ_MASTER_TITLE_TEXT/${AJ_MASTER_TITLE_TEXT}/ ; s/AJ_MASTER_TITLE_COLOR/${AJ_MASTER_TITLE_COLOR}/ ; s/AJ_MASTER_BANNER_COLOR/${AJ_MASTER_BANNER_COLOR}/" templates/aj-server/aj.css.template > setup/userContent/aj.css
     cp setup/userContent/* .data/jenkins_home/userContent 2> /dev/null | true
 
     mkdir -p setup/files
@@ -127,10 +127,10 @@ function setupajScript {
 }
 
 function info {
-    echo -e "\n${BG_BLUE}aj MASTER SERVER INFORMATION${NC}\n"
+    echo -e "\n${BG_BLUE}advancedJenkins MASTER SERVER INFORMATION${NC}\n"
     echo -e "[Server host IP address]\t${BLUE}$aj_HOST_IP${NC}"
-    echo -e "[aj HTTP port]\t\t\t${BLUE}$JENKINS_HTTP_PORT_FOR_SLAVES${NC}"
-    echo -e "[aj JNLP port for slaves]\t${BLUE}$JENKINS_SLAVE_AGENT_PORT${NC}"
+    echo -e "[advancedJenkins HTTP port]\t\t\t${BLUE}$JENKINS_HTTP_PORT_FOR_SLAVES${NC}"
+    echo -e "[advancedJenkins JNLP port for slaves]\t${BLUE}$JENKINS_SLAVE_AGENT_PORT${NC}"
     echo -e "[Number of master executors]\t${BLUE}$JENKINS_ENV_EXECUTERS${NC}"
 }
 
@@ -141,7 +141,7 @@ function version {
         echo -e "[Version]\t${BLUE}${version}${NC}" > info/version/version.txt
         echo -e "[Hash]\t\t${BLUE}${hash}${NC}" >> info/version/version.txt
     fi
-    echo -e "\n${BG_BLUE}aj MASTER VERSION INFORMATION${NC}\n"
+    echo -e "\n${BG_BLUE}advancedJenkins MASTER VERSION INFORMATION${NC}\n"
     cat info/version/version.txt
 }
 
@@ -158,17 +158,17 @@ function startajServer {
 function showajServerStatus {
     status=`curl -s -I -m 5 http://localhost:$JENKINS_HTTP_PORT_FOR_SLAVES | grep "403" | wc -l | xargs`
     if [[ "$status" == "1" ]]; then
-        echo -e "\n${BLUE}[aj status] ${BG_GREEN}aj-server is up and running${NC}\n"
+        echo -e "\n${BLUE}[advancedJenkins status] ${BG_GREEN}advancedJenkins-server is up and running${NC}\n"
     else
         status=`curl -s -I -m 5 http://localhost:$JENKINS_HTTP_PORT_FOR_SLAVES | grep "401" | wc -l | xargs`
         if [[ "$status" == "1" ]]; then
-            echo -e "\n${BLUE}[aj status] ${BG_GREEN}aj-server is up and running${NC}\n"
+            echo -e "\n${BLUE}[advancedJenkins status] ${BG_GREEN}advancedJenkins-server is up and running${NC}\n"
         else
             status=`curl -s -I -m 5 http://localhost:$JENKINS_HTTP_PORT_FOR_SLAVES | grep "503" | wc -l | xargs`
             if [[ "$status" == "1" ]]; then
-                echo -e "\n${BLUE}[aj status] ${BG_RED}aj-server is starting${NC}\n"
+                echo -e "\n${BLUE}[advancedJenkins status] ${BG_RED}advancedJenkins-server is starting${NC}\n"
             else
-                echo -e "\n${BLUE}[aj status] ${BG_RED}aj-server is down${NC}\n"
+                echo -e "\n${BLUE}[advancedJenkins status] ${BG_RED}advancedJenkins-server is down${NC}\n"
             fi
         fi
     fi

@@ -104,7 +104,7 @@ function setupajScript {
     cp -n templates/userContent/* setup/userContent/ 2> /dev/null | true
     cp -f ${aj_CUSTOMIZATION_FOLDER}/userContent/* setup/userContent/ 2> /dev/null | true
     mkdir -p .data/jenkins_home/userContent
-    sed "s/aj_MASTER_TITLE_TEXT/${aj_MASTER_TITLE_TEXT}/ ; s/aj_MASTER_TITLE_COLOR/${aj_MASTER_TITLE_COLOR}/ ; s/aj_MASTER_BANNER_COLOR/${aj_MASTER_BANNER_COLOR}/" templates/aj-server/aj.css.template > setup/userContent/aj.css
+    sed "s/AJ_MASTER_TITLE_TEXT/${aj_MASTER_TITLE_TEXT}/ ; s/AJ_MASTER_TITLE_COLOR/${aj_MASTER_TITLE_COLOR}/ ; s/AJ_MASTER_BANNER_COLOR/${aj_MASTER_BANNER_COLOR}/" templates/aj-server/aj.css.template > setup/userContent/aj.css
     cp setup/userContent/* .data/jenkins_home/userContent 2> /dev/null | true
 
     mkdir -p setup/files

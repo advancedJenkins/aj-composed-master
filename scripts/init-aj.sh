@@ -58,7 +58,7 @@ inputVariable "Jenkins server HTTP port" JENKINS_HTTP_PORT_FOR_SLAVES
 inputVariable "Jenkins JNLP port for slaves" JENKINS_SLAVE_AGENT_PORT
 inputTextVariable "advancedJenkins customization folder root path" AJ_CUSTOMIZATION_FOLDER
 inputVariable "Number of executers on master" JENKINS_ENV_EXECUTERS
-inputTextVariable "advancedJenkins banner title" AJMASTER_TITLE_TEXT
+inputTextVariable "advancedJenkins banner title" AJ_MASTER_TITLE_TEXT
 inputVariable "advancedJenkins banner title color" AJ_MASTER_TITLE_COLOR
 inputVariable "AppCyadvancedJenkinscles banner background color" AJ_MASTER_BANNER_COLOR
 

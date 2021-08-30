@@ -53,8 +53,8 @@ function upgrade {
 }
 
 function ipTest {
-    export aj_HOST_IP="$(/sbin/ifconfig | grep 'inet ' | grep -Fv 127.0.0.1 | awk '{print $2}' | head -n 1 | sed -e 's/addr://')"
-    echo -e "\nIP: ${BG_BLUE}${aj_HOST_IP}${NC}\n"
+    export AJ_HOST_IP="$(/sbin/ifconfig | grep 'inet ' | grep -Fv 127.0.0.1 | awk '{print $2}' | head -n 1 | sed -e 's/addr://')"
+    echo -e "\nIP: ${BG_BLUE}${AJ_HOST_IP}${NC}\n"
 }
 
 function setupajScript {
@@ -77,7 +77,7 @@ function setupajScript {
         cp templates/docker-compose/docker-compose.yml.template setup/docker-compose/docker-compose.yml.template
     fi
     cp -n templates/customized/docker-compose/*.yml cust/docker-compose/ 2> /dev/null | true
-    cp -f ${aj_CUSTOMIZATION_FOLDER}/docker-compose/*.yml setup/docker-compose/ 2> /dev/null | true
+    cp -f ${AJ_CUSTOMIZATION_FOLDER}/docker-compose/*.yml setup/docker-compose/ 2> /dev/null | true
     echo "# PLEASE NOTICE:" > docker-compose.yml
     echo "# This is a generated file, so any change in it will be lost on the next advancedJenkins action!" >> docker-compose.yml
     echo "" >> docker-compose.yml
@@ -102,7 +102,7 @@ function setupajScript {
     mkdir -p cust/userContent
     cp -n templates/customized/userContent/*.yml cust/userContent/ 2> /dev/null | true
     cp -n templates/userContent/* setup/userContent/ 2> /dev/null | true
-    cp -f ${aj_CUSTOMIZATION_FOLDER}/userContent/* setup/userContent/ 2> /dev/null | true
+    cp -f ${AJ_CUSTOMIZATION_FOLDER}/userContent/* setup/userContent/ 2> /dev/null | true
     mkdir -p .data/jenkins_home/userContent
     sed "s/AJ_MASTER_TITLE_TEXT/${AJ_MASTER_TITLE_TEXT}/ ; s/AJ_MASTER_TITLE_COLOR/${AJ_MASTER_TITLE_COLOR}/ ; s/AJ_MASTER_BANNER_COLOR/${AJ_MASTER_BANNER_COLOR}/" templates/aj-server/aj.css.template > setup/userContent/aj.css
     cp setup/userContent/* .data/jenkins_home/userContent 2> /dev/null | true
@@ -114,11 +114,11 @@ function setupajScript {
     mkdir -p setup/plugins
     mkdir -p cust/plugins
     cp -n -R templates/plugins/* setup/plugins/ 2> /dev/null | true
-    cp -f ${aj_CUSTOMIZATION_FOLDER}/plugins/* setup/plugins/ 2> /dev/null | true
+    cp -f ${AJ_CUSTOMIZATION_FOLDER}/plugins/* setup/plugins/ 2> /dev/null | true
     export JENKINS_ENV_PLUGINS=`awk -v ORS=, '{ print $1 }' setup/plugins/* | sed 's/,$//'`
 
-    if [[ ! -n "$aj_HOST_IP" || "$aj_HOST_IP" == "*" ]]; then
-        export aj_HOST_IP="$(/sbin/ifconfig | grep 'inet ' | grep -Fv 127.0.0.1 | awk '{print $2}' | head -n 1 | sed -e 's/addr://')"
+    if [[ ! -n "$AJ_HOST_IP" || "$AJ_HOST_IP" == "*" ]]; then
+        export AJ_HOST_IP="$(/sbin/ifconfig | grep 'inet ' | grep -Fv 127.0.0.1 | awk '{print $2}' | head -n 1 | sed -e 's/addr://')"
     fi
 
     if [[ "$action" == "init" ]]; then
@@ -128,7 +128,7 @@ function setupajScript {
 
 function info {
     echo -e "\n${BG_BLUE}advancedJenkins MASTER SERVER INFORMATION${NC}\n"
-    echo -e "[Server host IP address]\t${BLUE}$aj_HOST_IP${NC}"
+    echo -e "[Server host IP address]\t${BLUE}$AJ_HOST_IP${NC}"
     echo -e "[advancedJenkins HTTP port]\t\t\t${BLUE}$JENKINS_HTTP_PORT_FOR_SLAVES${NC}"
     echo -e "[advancedJenkins JNLP port for slaves]\t${BLUE}$JENKINS_SLAVE_AGENT_PORT${NC}"
     echo -e "[Number of master executors]\t${BLUE}$JENKINS_ENV_EXECUTERS${NC}"
